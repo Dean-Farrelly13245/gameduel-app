@@ -14,8 +14,8 @@
         android:textStyle="bold"
         android:paddingBottom="12dp"/>
 
-    <ListView
-        android:id="@+id/list_games"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_games"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
