@@ -6,6 +6,18 @@
     <string name="nav_leaderboard">Leaderboard</string>
 
     <string name="games_title">GAMES</string>
+    <string name="add_game_button">+ ADD</string>
+    <string name="search_games_hint">Search games...</string>
+    <string name="add_game_title">ADD GAME</string>
+    <string name="edit_game_title">EDIT GAME</string>
+    <string name="delete_game_button">DELETE GAME</string>
+    <string name="save_game_button">SAVE GAME</string>
+    <string name="save_changes_button">SAVE CHANGES</string>
+    <string name="title_hint">Title</string>
+    <string name="genre_hint">Genre</string>
+    <string name="platform_hint">Platform</string>
+    <string name="release_year_hint">Release Year</string>
+    <string name="cover_image_url_hint">Cover Image URL</string>
     <string name="matchup_title">MATCHUP</string>
     <string name="leaderboard_title">LEADERBOARD</string>
     <string name="other_ranks">OTHER RANKS</string>

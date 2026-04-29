@@ -71,7 +71,7 @@
             android:id="@+id/btn_edit_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="EDIT GAME"
+            android:text="@string/edit_game_title"
             android:backgroundTint="@color/retro_blue"
             android:textColor="@color/retro_bg"
             android:layout_marginBottom="8dp"/>
@@ -80,7 +80,7 @@
             android:id="@+id/btn_delete_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DELETE GAME"
+            android:text="@string/delete_game_button"
             android:backgroundTint="#FF0000"
             android:textColor="@color/white"/>
 

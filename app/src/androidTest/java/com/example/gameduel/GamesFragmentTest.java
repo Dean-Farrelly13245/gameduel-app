@@ -41,6 +41,7 @@ public class GamesFragmentTest {
         Thread.sleep(3000);
         onView(withId(R.id.recycler_games))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        Thread.sleep(2000);
         onView(withId(R.id.txt_detail_title)).check(matches(isDisplayed()));
     }
 }

@@ -6,6 +6,18 @@
     <string name="nav_leaderboard">Lyderiai</string>
 
     <string name="games_title">ŽAIDIMAI</string>
+    <string name="add_game_button">+ PRIDĖTI</string>
+    <string name="search_games_hint">Ieškoti žaidimų...</string>
+    <string name="add_game_title">PRIDĖTI ŽAIDIMĄ</string>
+    <string name="edit_game_title">REDAGUOTI ŽAIDIMĄ</string>
+    <string name="delete_game_button">IŠTRINTI ŽAIDIMĄ</string>
+    <string name="save_game_button">IŠSAUGOTI ŽAIDIMĄ</string>
+    <string name="save_changes_button">IŠSAUGOTI PAKEITIMUS</string>
+    <string name="title_hint">Pavadinimas</string>
+    <string name="genre_hint">Žanras</string>
+    <string name="platform_hint">Platforma</string>
+    <string name="release_year_hint">Išleidimo metai</string>
+    <string name="cover_image_url_hint">Viršelio paveikslėlio URL</string>
     <string name="matchup_title">RUNGTYNĖS</string>
     <string name="leaderboard_title">LYDERIAI</string>
     <string name="other_ranks">KITOS VIETOS</string>

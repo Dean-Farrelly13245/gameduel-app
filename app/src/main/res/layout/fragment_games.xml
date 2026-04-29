@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="GAMES"
+            android:text="@string/games_title"
             android:textSize="18sp"
             android:textColor="@color/retro_yellow"
             android:fontFamily="@font/pressstart2p"/>
@@ -27,7 +27,7 @@
             android:id="@+id/btn_add_game"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+ ADD"
+            android:text="@string/add_game_button"
             android:textSize="10sp"
             android:backgroundTint="@color/retro_blue"
             android:textColor="@color/retro_bg"/>
@@ -38,7 +38,7 @@
         android:id="@+id/edit_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Search games..."
+        android:hint="@string/search_games_hint"
         android:textColor="@color/white"
         android:textColorHint="@color/retro_text_secondary"
         android:backgroundTint="@color/retro_blue"
