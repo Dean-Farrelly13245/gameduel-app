@@ -1,3 +1,67 @@
 <resources>
     <string name="app_name">GameDuel</string>
+
+    <string name="nav_games">Games</string>
+    <string name="nav_matchups">Matchups</string>
+    <string name="nav_leaderboard">Leaderboard</string>
+
+    <string name="games_title">GAMES</string>
+    <string name="matchup_title">MATCHUP</string>
+    <string name="leaderboard_title">LEADERBOARD</string>
+    <string name="other_ranks">OTHER RANKS</string>
+    <string name="vs_text">VS</string>
+
+    <string name="loading_games">Loading games...</string>
+    <string name="loading_leaderboard">Loading leaderboard...</string>
+    <string name="tap_game_to_vote">Tap a game to vote</string>
+    <string name="saving_vote">Saving vote...</string>
+
+    <string name="failed_load_games">Failed to load games</string>
+    <string name="failed_load_leaderboard">Failed to load leaderboard</string>
+    <string name="failed_create_matchup">Failed to create matchup</string>
+    <string name="failed_save_vote">Failed to save vote</string>
+
+    <string name="could_not_connect_api">Could not connect to the API.</string>
+    <string name="could_not_create_matchup">Could not create matchup.</string>
+    <string name="could_not_save_vote">Could not save vote.</string>
+
+    <string name="vote_saved">Vote saved</string>
+
+    <string name="not_enough_games_vote">You need at least 2 games to start voting.</string>
+    <string name="not_enough_games_matchup">Not enough games for a matchup.</string>
+
+    <string name="game_a_placeholder">Game A</string>
+    <string name="game_b_placeholder">Game B</string>
+    <string name="game_title_placeholder">Game Title</string>
+
+    <string name="genre_placeholder">Genre</string>
+    <string name="platform_placeholder">Platform</string>
+
+    <string name="genre_text">Genre: %1$s</string>
+    <string name="platform_text">Platform: %1$s</string>
+    <string name="release_year_text">Release Year: %1$d</string>
+    <string name="wins_text">Wins: %1$d</string>
+    <string name="losses_text">Losses: %1$d</string>
+
+    <string name="first_place_title">1st Place</string>
+    <string name="second_place_title">2nd Place</string>
+    <string name="third_place_title">3rd Place</string>
+
+    <string name="first_place_short">1ST</string>
+    <string name="second_place_short">2ND</string>
+    <string name="third_place_short">3RD</string>
+
+    <string name="rank_text">#%1$d</string>
+    <string name="wins_zero">Wins: 0</string>
+
+    <string name="error_with_message">Error: %1$s</string>
+
+    <string-array name="sort_options">
+        <item>A-Z</item>
+        <item>Z-A</item>
+        <item>Most Wins</item>
+        <item>Most Losses</item>
+        <item>Most Recent</item>
+        <item>Oldest</item>
+    </string-array>
 </resources>

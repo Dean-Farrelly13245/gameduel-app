@@ -3,7 +3,9 @@ package com.example.gameduel;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.squareup.picasso.Picasso;
 
 public class GameDetailActivity extends AppCompatActivity {
@@ -30,11 +32,11 @@ public class GameDetailActivity extends AppCompatActivity {
         int losses = getIntent().getIntExtra("losses", 0);
 
         txtTitle.setText(title);
-        txtGenre.setText("Genre: " + genre);
-        txtPlatform.setText("Platform: " + platform);
-        txtReleaseYear.setText("Release Year: " + releaseYear);
-        txtWins.setText("Wins: " + wins);
-        txtLosses.setText("Losses: " + losses);
+        txtGenre.setText(getString(R.string.genre_text, genre));
+        txtPlatform.setText(getString(R.string.platform_text, platform));
+        txtReleaseYear.setText(getString(R.string.release_year_text, releaseYear));
+        txtWins.setText(getString(R.string.wins_text, wins));
+        txtLosses.setText(getString(R.string.losses_text, losses));
 
         if (coverImageUrl != null && !coverImageUrl.isEmpty()) {
             Picasso.get().load(coverImageUrl).into(imgCover);

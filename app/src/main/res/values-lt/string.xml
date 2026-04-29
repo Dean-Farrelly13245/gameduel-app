@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">GameDuel</string>
+
+    <string name="nav_games">Žaidimai</string>
+    <string name="nav_matchups">Dvikovos</string>
+    <string name="nav_leaderboard">Lyderiai</string>
+
+    <string name="games_title">ŽAIDIMAI</string>
+    <string name="matchup_title">DVIKOVA</string>
+    <string name="leaderboard_title">LYDERIAI</string>
+    <string name="other_ranks">KITOS VIETOS</string>
+    <string name="vs_text">VS</string>
+
+    <string name="loading_games">Kraunami žaidimai...</string>
+    <string name="loading_leaderboard">Kraunama lyderių lentelė...</string>
+    <string name="tap_game_to_vote">Paspausk žaidimą, kad balsuotum</string>
+    <string name="saving_vote">Išsaugomas balsas...</string>
+
+    <string name="failed_load_games">Nepavyko užkrauti žaidimų</string>
+    <string name="failed_load_leaderboard">Nepavyko užkrauti lyderių lentelės</string>
+    <string name="failed_create_matchup">Nepavyko sukurti dvikovos</string>
+    <string name="failed_save_vote">Nepavyko išsaugoti balso</string>
+
+    <string name="could_not_connect_api">Nepavyko prisijungti prie API.</string>
+    <string name="could_not_create_matchup">Nepavyko sukurti dvikovos.</string>
+    <string name="could_not_save_vote">Nepavyko išsaugoti balso.</string>
+
+    <string name="vote_saved">Balsas išsaugotas</string>
+
+    <string name="not_enough_games_vote">Kad pradėtum balsavimą, reikia bent 2 žaidimų.</string>
+    <string name="not_enough_games_matchup">Dvikovai nepakanka žaidimų.</string>
+
+    <string name="game_a_placeholder">Žaidimas A</string>
+    <string name="game_b_placeholder">Žaidimas B</string>
+    <string name="game_title_placeholder">Žaidimo pavadinimas</string>
+
+    <string name="genre_placeholder">Žanras</string>
+    <string name="platform_placeholder">Platforma</string>
+
+    <string name="genre_text">Žanras: %1$s</string>
+    <string name="platform_text">Platforma: %1$s</string>
+    <string name="release_year_text">Išleidimo metai: %1$d</string>
+    <string name="wins_text">Pergalės: %1$d</string>
+    <string name="losses_text">Pralaimėjimai: %1$d</string>
+
+    <string name="first_place_title">1 vieta</string>
+    <string name="second_place_title">2 vieta</string>
+    <string name="third_place_title">3 vieta</string>
+
+    <string name="first_place_short">1</string>
+    <string name="second_place_short">2</string>
+    <string name="third_place_short">3</string>
+
+    <string name="rank_text">#%1$d</string>
+    <string name="wins_zero">Pergalės: 0</string>
+
+    <string name="error_with_message">Klaida: %1$s</string>
+
+    <string-array name="sort_options">
+        <item>A-Z</item>
+        <item>Z-A</item>
+        <item>Daugiausia pergalių</item>
+        <item>Daugiausia pralaimėjimų</item>
+        <item>Naujausi</item>
+        <item>Seniausi</item>
+    </string-array>
+</resources>

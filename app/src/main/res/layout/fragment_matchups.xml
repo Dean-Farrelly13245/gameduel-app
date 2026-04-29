@@ -1,22 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/retro_bg">
 
-    <TextView
-        android:id="@+id/txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Matchups"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:paddingBottom="12dp"/>
-
-    <ListView
-        android:id="@+id/list_matchups"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/matchup_title"
+            android:textSize="18sp"
+            android:textColor="@color/retro_yellow"
+            android:fontFamily="@font/pressstart2p"
+            android:paddingBottom="12dp" />
+
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loading_games"
+            android:textSize="8sp"
+            android:textColor="@color/retro_blue"
+            android:fontFamily="@font/pressstart2p"
+            android:paddingBottom="16dp" />
+
+        <LinearLayout
+            android:id="@+id/card_game_a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_border"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/img_game_a"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:id="@+id/txt_game_a_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_a_placeholder"
+                android:textSize="10sp"
+                android:textColor="@color/retro_yellow"
+                android:fontFamily="@font/pressstart2p"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/txt_game_a_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/genre_placeholder"
+                android:textSize="7sp"
+                android:textColor="@color/retro_blue"
+                android:fontFamily="@font/pressstart2p"
+                android:paddingBottom="6dp" />
+
+            <TextView
+                android:id="@+id/txt_game_a_platform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/platform_placeholder"
+                android:textSize="7sp"
+                android:textColor="@color/retro_text_secondary"
+                android:fontFamily="@font/pressstart2p" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_vs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vs_text"
+            android:textSize="16sp"
+            android:textColor="@color/retro_blue"
+            android:fontFamily="@font/pressstart2p"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="16dp" />
+
+        <LinearLayout
+            android:id="@+id/card_game_b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_border"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/img_game_b"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:id="@+id/txt_game_b_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_b_placeholder"
+                android:textSize="10sp"
+                android:textColor="@color/retro_yellow"
+                android:fontFamily="@font/pressstart2p"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/txt_game_b_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/genre_placeholder"
+                android:textSize="7sp"
+                android:textColor="@color/retro_blue"
+                android:fontFamily="@font/pressstart2p"
+                android:paddingBottom="6dp" />
+
+            <TextView
+                android:id="@+id/txt_game_b_platform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/platform_placeholder"
+                android:textSize="7sp"
+                android:textColor="@color/retro_text_secondary"
+                android:fontFamily="@font/pressstart2p" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
