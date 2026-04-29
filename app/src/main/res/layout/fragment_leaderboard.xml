@@ -2,21 +2,219 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/retro_bg"
     android:orientation="vertical"
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/txt_title"
+        android:id="@+id/txt_leaderboard_title_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Leaderboard"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:paddingBottom="12dp"/>
+        android:fontFamily="@font/pressstart2p"
+        android:text="LEADERBOARD"
+        android:textColor="@color/retro_yellow"
+        android:textSize="18sp"
+        android:paddingBottom="10dp" />
 
-    <ListView
-        android:id="@+id/list_leaderboard"
+    <TextView
+        android:id="@+id/txt_leaderboard_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pressstart2p"
+        android:text="Loading leaderboard..."
+        android:textColor="@color/retro_blue"
+        android:textSize="8sp"
+        android:paddingBottom="12dp" />
+
+    <LinearLayout
+        android:id="@+id/podium_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="bottom|center_horizontal"
+            android:padding="4dp">
+
+            <ImageView
+                android:id="@+id/img_second_place"
+                android:layout_width="90dp"
+                android:layout_height="110dp"
+                android:background="@drawable/card_border"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/txt_second_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pressstart2p"
+                android:text="2nd Place"
+                android:textColor="#C0C0C0"
+                android:textSize="7sp"
+                android:gravity="center"
+                android:paddingTop="6dp"
+                android:maxLines="2" />
+
+            <TextView
+                android:id="@+id/txt_second_wins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pressstart2p"
+                android:text="Wins: 0"
+                android:textColor="@color/retro_text_secondary"
+                android:textSize="6sp"
+                android:paddingTop="4dp"
+                android:paddingBottom="6dp" />
+
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:background="#C0C0C0"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pressstart2p"
+                    android:text="2ND"
+                    android:textColor="@color/retro_bg"
+                    android:textSize="9sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="bottom|center_horizontal"
+            android:padding="4dp">
+
+            <ImageView
+                android:id="@+id/img_first_place"
+                android:layout_width="100dp"
+                android:layout_height="125dp"
+                android:background="@drawable/card_border"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/txt_first_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pressstart2p"
+                android:text="1st Place"
+                android:textColor="#FFD700"
+                android:textSize="8sp"
+                android:gravity="center"
+                android:paddingTop="6dp"
+                android:maxLines="2" />
+
+            <TextView
+                android:id="@+id/txt_first_wins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pressstart2p"
+                android:text="Wins: 0"
+                android:textColor="@color/retro_text_secondary"
+                android:textSize="6sp"
+                android:paddingTop="4dp"
+                android:paddingBottom="6dp" />
+
+            <LinearLayout
+                android:layout_width="85dp"
+                android:layout_height="100dp"
+                android:background="#FFD700"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pressstart2p"
+                    android:text="1ST"
+                    android:textColor="@color/retro_bg"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="bottom|center_horizontal"
+            android:padding="4dp">
+
+            <ImageView
+                android:id="@+id/img_third_place"
+                android:layout_width="90dp"
+                android:layout_height="110dp"
+                android:background="@drawable/card_border"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/txt_third_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pressstart2p"
+                android:text="3rd Place"
+                android:textColor="#CD7F32"
+                android:textSize="7sp"
+                android:gravity="center"
+                android:paddingTop="6dp"
+                android:maxLines="2" />
+
+            <TextView
+                android:id="@+id/txt_third_wins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pressstart2p"
+                android:text="Wins: 0"
+                android:textColor="@color/retro_text_secondary"
+                android:textSize="6sp"
+                android:paddingTop="4dp"
+                android:paddingBottom="6dp" />
+
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:background="#CD7F32"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pressstart2p"
+                    android:text="3RD"
+                    android:textColor="@color/retro_bg"
+                    android:textSize="9sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_rest_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pressstart2p"
+        android:text="OTHER RANKS"
+        android:textColor="@color/retro_blue"
+        android:textSize="8sp"
+        android:paddingBottom="10dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_leaderboard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>
