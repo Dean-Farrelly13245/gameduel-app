@@ -1,5 +1,6 @@
 package com.example.gameduel;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,11 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
         this.gameList = gameList;
     }
 
+    public void updateList(List<Game> newList) {
+        gameList = newList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public GameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -29,6 +35,18 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
         holder.txtTitle.setText(game.getTitle());
         holder.txtGenre.setText(game.getGenre());
         holder.txtPlatform.setText(game.getPlatform());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), GameDetailActivity.class);
+            intent.putExtra("title", game.getTitle());
+            intent.putExtra("genre", game.getGenre());
+            intent.putExtra("platform", game.getPlatform());
+            intent.putExtra("releaseYear", game.getReleaseYear());
+            intent.putExtra("coverImageUrl", game.getCoverImageUrl());
+            intent.putExtra("wins", game.getWins());
+            intent.putExtra("losses", game.getLosses());
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override

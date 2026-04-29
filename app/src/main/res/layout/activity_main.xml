@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/retro_bg">
 
     <FrameLayout
         android:id="@+id/content_area"
@@ -14,7 +15,12 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
+        android:background="@color/retro_card"
+        app:itemTextColor="@color/retro_blue"
+        app:itemIconTint="@color/retro_blue"
+        app:itemTextAppearanceActive="@style/RetroNavText"
+        app:itemTextAppearanceInactive="@style/RetroNavText"
         app:menu="@menu/bottom_nav_menu"/>
 
 </LinearLayout>
