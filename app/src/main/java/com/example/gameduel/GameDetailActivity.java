@@ -64,6 +64,8 @@ public class GameDetailActivity extends AppCompatActivity {
             intent.putExtra("releaseYear", releaseYear);
             intent.putExtra("coverImageUrl", coverImageUrl);
             intent.putExtra("description", description);
+            intent.putExtra("wins", wins);
+            intent.putExtra("losses", losses);
             startActivity(intent);
         });
 

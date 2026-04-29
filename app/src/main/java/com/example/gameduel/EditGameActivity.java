@@ -57,9 +57,10 @@ public class EditGameActivity extends AppCompatActivity {
         game.setPlatform(platform);
         game.setReleaseYear(releaseYear);
         game.setCoverImageUrl(coverImageUrl);
-        game.setDescription("");
-        game.setWins(0);
-        game.setLosses(0);
+        game.setDescription(getIntent().getStringExtra("description") != null
+                ? getIntent().getStringExtra("description") : "");
+        game.setWins(getIntent().getIntExtra("wins", 0));
+        game.setLosses(getIntent().getIntExtra("losses", 0));
 
         ApiService apiService = RetrofitClient.getInstance().create(ApiService.class);
         Call<Game> call = apiService.updateGame(gameId, game);
@@ -71,13 +72,15 @@ public class EditGameActivity extends AppCompatActivity {
                     Toast.makeText(EditGameActivity.this, "Game updated!", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(EditGameActivity.this, "Failed to update game", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditGameActivity.this,
+                            "Failed: " + response.code() + " " + response.message(),
+                            Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Game> call, Throwable t) {
-                Toast.makeText(EditGameActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditGameActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
