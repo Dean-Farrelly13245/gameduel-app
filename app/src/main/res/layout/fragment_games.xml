@@ -16,6 +16,17 @@
         android:fontFamily="@font/pressstart2p"
         android:paddingBottom="16dp"/>
 
+    <EditText
+        android:id="@+id/edit_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search games..."
+        android:textColor="@color/white"
+        android:textColorHint="@color/retro_text_secondary"
+        android:backgroundTint="@color/retro_blue"
+        android:inputType="text"
+        android:layout_marginBottom="8dp"/>
+
     <Spinner
         android:id="@+id/spinner_sort"
         android:layout_width="match_parent"

@@ -1,11 +1,14 @@
 package com.example.gameduel;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
@@ -24,6 +27,7 @@ public class GamesFragment extends Fragment {
     private GameAdapter adapter;
     private List<Game> allGames = new ArrayList<>();
     private Spinner spinnerSort;
+    private EditText editSearch;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class GamesFragment extends Fragment {
         recyclerGames.setLayoutManager(new LinearLayoutManager(getContext()));
 
         spinnerSort = view.findViewById(R.id.spinner_sort);
+        editSearch = view.findViewById(R.id.edit_search);
+
         String[] sortOptions = {"A-Z", "Z-A", "Most Wins", "Most Losses", "Most Recent", "Oldest"};
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, sortOptions);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -41,11 +47,24 @@ public class GamesFragment extends Fragment {
         spinnerSort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                sortGames(position);
+                applyFilterAndSort();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        editSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                applyFilterAndSort();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
 
         loadGames();
@@ -64,7 +83,7 @@ public class GamesFragment extends Fragment {
                     allGames = response.body();
                     adapter = new GameAdapter(new ArrayList<>(allGames));
                     recyclerGames.setAdapter(adapter);
-                    sortGames(spinnerSort.getSelectedItemPosition());
+                    applyFilterAndSort();
                 } else {
                     Toast.makeText(getContext(), "Failed to load games", Toast.LENGTH_SHORT).show();
                 }
@@ -77,20 +96,28 @@ public class GamesFragment extends Fragment {
         });
     }
 
-    private void sortGames(int position) {
+    private void applyFilterAndSort() {
         if (allGames == null || allGames.isEmpty()) return;
 
-        List<Game> sorted = new ArrayList<>(allGames);
+        String query = editSearch.getText().toString().toLowerCase().trim();
 
-        switch (position) {
-            case 0: Collections.sort(sorted, (a, b) -> a.getTitle().compareTo(b.getTitle())); break;
-            case 1: Collections.sort(sorted, (a, b) -> b.getTitle().compareTo(a.getTitle())); break;
-            case 2: Collections.sort(sorted, (a, b) -> b.getWins() - a.getWins()); break;
-            case 3: Collections.sort(sorted, (a, b) -> b.getLosses() - a.getLosses()); break;
-            case 4: Collections.sort(sorted, (a, b) -> b.getReleaseYear() - a.getReleaseYear()); break;
-            case 5: Collections.sort(sorted, (a, b) -> a.getReleaseYear() - b.getReleaseYear()); break;
+        List<Game> filtered = new ArrayList<>();
+        for (Game game : allGames) {
+            if (game.getTitle().toLowerCase().contains(query)) {
+                filtered.add(game);
+            }
         }
 
-        if (adapter != null) adapter.updateList(sorted);
+        int sortPosition = spinnerSort.getSelectedItemPosition();
+        switch (sortPosition) {
+            case 0: Collections.sort(filtered, (a, b) -> a.getTitle().compareTo(b.getTitle())); break;
+            case 1: Collections.sort(filtered, (a, b) -> b.getTitle().compareTo(a.getTitle())); break;
+            case 2: Collections.sort(filtered, (a, b) -> b.getWins() - a.getWins()); break;
+            case 3: Collections.sort(filtered, (a, b) -> b.getLosses() - a.getLosses()); break;
+            case 4: Collections.sort(filtered, (a, b) -> b.getReleaseYear() - a.getReleaseYear()); break;
+            case 5: Collections.sort(filtered, (a, b) -> a.getReleaseYear() - b.getReleaseYear()); break;
+        }
+
+        if (adapter != null) adapter.updateList(filtered);
     }
 }
