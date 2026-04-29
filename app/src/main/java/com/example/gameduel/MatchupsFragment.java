@@ -75,7 +75,7 @@ public class MatchupsFragment extends Fragment {
     }
 
     private void loadGames() {
-        txtStatus.setText("Loading games...");
+        txtStatus.setText(getString(R.string.loading_games));
 
         ApiService apiService = RetrofitClient.getInstance().create(ApiService.class);
         Call<List<Game>> call = apiService.getGames();
@@ -87,23 +87,23 @@ public class MatchupsFragment extends Fragment {
                     allGames = response.body();
 
                     if (allGames.size() < 2) {
-                        txtStatus.setText("You need at least 2 games to start voting.");
+                        txtStatus.setText(getString(R.string.not_enough_games_vote));
                         setCardsEnabled(false);
                         return;
                     }
 
                     showRandomMatchup();
                 } else {
-                    txtStatus.setText("Failed to load games.");
-                    showToast("Failed to load games");
+                    txtStatus.setText(getString(R.string.failed_load_games));
+                    showToast(getString(R.string.failed_load_games));
                     setCardsEnabled(false);
                 }
             }
 
             @Override
             public void onFailure(Call<List<Game>> call, Throwable t) {
-                txtStatus.setText("Could not connect to the API.");
-                showToast("Error: " + t.getMessage());
+                txtStatus.setText(getString(R.string.could_not_connect_api));
+                showToast(getString(R.string.error_with_message, t.getMessage()));
                 setCardsEnabled(false);
             }
         });
@@ -111,7 +111,7 @@ public class MatchupsFragment extends Fragment {
 
     private void showRandomMatchup() {
         if (allGames.size() < 2) {
-            txtStatus.setText("Not enough games for a matchup.");
+            txtStatus.setText(getString(R.string.not_enough_games_matchup));
             return;
         }
 
@@ -128,15 +128,15 @@ public class MatchupsFragment extends Fragment {
         bindGameToCard(currentGameA, imgGameA, txtGameATitle, txtGameAGenre, txtGameAPlatform);
         bindGameToCard(currentGameB, imgGameB, txtGameBTitle, txtGameBGenre, txtGameBPlatform);
 
-        txtStatus.setText("Tap a game to vote");
+        txtStatus.setText(getString(R.string.tap_game_to_vote));
         setCardsEnabled(true);
         isVoting = false;
     }
 
     private void bindGameToCard(Game game, ImageView imageView, TextView txtTitle, TextView txtGenre, TextView txtPlatform) {
         txtTitle.setText(game.getTitle());
-        txtGenre.setText("Genre: " + game.getGenre());
-        txtPlatform.setText("Platform: " + game.getPlatform());
+        txtGenre.setText(getString(R.string.genre_text, game.getGenre()));
+        txtPlatform.setText(getString(R.string.platform_text, game.getPlatform()));
 
         if (!TextUtils.isEmpty(game.getCoverImageUrl())) {
             Picasso.get()
@@ -156,7 +156,7 @@ public class MatchupsFragment extends Fragment {
 
         isVoting = true;
         setCardsEnabled(false);
-        txtStatus.setText("Saving vote...");
+        txtStatus.setText(getString(R.string.saving_vote));
 
         Matchup matchup = new Matchup(currentGameA.getId(), currentGameB.getId(), null);
 
@@ -171,8 +171,8 @@ public class MatchupsFragment extends Fragment {
                     sendVote(matchupId, winnerGame.getId());
                 } else {
                     isVoting = false;
-                    txtStatus.setText("Failed to create matchup.");
-                    showToast("Failed to create matchup");
+                    txtStatus.setText(getString(R.string.failed_create_matchup));
+                    showToast(getString(R.string.failed_create_matchup));
                     setCardsEnabled(true);
                 }
             }
@@ -180,8 +180,8 @@ public class MatchupsFragment extends Fragment {
             @Override
             public void onFailure(Call<Matchup> call, Throwable t) {
                 isVoting = false;
-                txtStatus.setText("Could not create matchup.");
-                showToast("Error: " + t.getMessage());
+                txtStatus.setText(getString(R.string.could_not_create_matchup));
+                showToast(getString(R.string.error_with_message, t.getMessage()));
                 setCardsEnabled(true);
             }
         });
@@ -195,12 +195,12 @@ public class MatchupsFragment extends Fragment {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    showToast("Vote saved");
+                    showToast(getString(R.string.vote_saved));
                     showRandomMatchup();
                 } else {
                     isVoting = false;
-                    txtStatus.setText("Failed to save vote.");
-                    showToast("Failed to save vote");
+                    txtStatus.setText(getString(R.string.failed_save_vote));
+                    showToast(getString(R.string.failed_save_vote));
                     setCardsEnabled(true);
                 }
             }
@@ -208,8 +208,8 @@ public class MatchupsFragment extends Fragment {
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 isVoting = false;
-                txtStatus.setText("Could not save vote.");
-                showToast("Error: " + t.getMessage());
+                txtStatus.setText(getString(R.string.could_not_save_vote));
+                showToast(getString(R.string.error_with_message, t.getMessage()));
                 setCardsEnabled(true);
             }
         });

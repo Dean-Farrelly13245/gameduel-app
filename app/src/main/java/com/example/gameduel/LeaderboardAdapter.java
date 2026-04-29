@@ -38,9 +38,9 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
     public void onBindViewHolder(@NonNull LeaderboardViewHolder holder, int position) {
         Game game = gameList.get(position);
 
-        holder.txtRank.setText("#" + (position + 4));
+        holder.txtRank.setText(holder.itemView.getContext().getString(R.string.rank_text, position + 4));
         holder.txtTitle.setText(game.getTitle());
-        holder.txtWins.setText("Wins: " + game.getWins());
+        holder.txtWins.setText(holder.itemView.getContext().getString(R.string.wins_text, game.getWins()));
 
         if (!TextUtils.isEmpty(game.getCoverImageUrl())) {
             Picasso.get()

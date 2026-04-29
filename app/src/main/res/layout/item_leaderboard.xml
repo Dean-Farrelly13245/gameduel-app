@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pressstart2p"
-            android:text="Game Title"
+            android:text="@string/game_title_placeholder"
             android:textColor="@color/retro_blue"
             android:textSize="8sp"
             android:maxLines="2"
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pressstart2p"
-            android:text="Wins: 10"
+            android:text="@string/wins_zero"
             android:textColor="@color/retro_text_secondary"
             android:textSize="7sp" />
     </LinearLayout>
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pressstart2p"
-        android:text="#4"
+        android:text="@string/first_place_short"
         android:textColor="@color/retro_yellow"
         android:textSize="9sp" />
 

@@ -69,7 +69,7 @@ public class LeaderboardFragment extends Fragment {
     }
 
     private void loadLeaderboard() {
-        txtStatus.setText("Loading leaderboard...");
+        txtStatus.setText(getString(R.string.loading_leaderboard));
 
         ApiService apiService = RetrofitClient.getInstance().create(ApiService.class);
         Call<List<Game>> call = apiService.getLeaderboard();
@@ -93,22 +93,22 @@ public class LeaderboardFragment extends Fragment {
 
                     txtStatus.setText("");
                 } else {
-                    txtStatus.setText("Failed to load leaderboard.");
-                    Toast.makeText(getContext(), "Failed to load leaderboard", Toast.LENGTH_SHORT).show();
+                    txtStatus.setText(getString(R.string.failed_load_leaderboard));
+                    Toast.makeText(getContext(), getString(R.string.failed_load_leaderboard), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Game>> call, Throwable t) {
-                txtStatus.setText("Could not connect to the API.");
-                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                txtStatus.setText(getString(R.string.could_not_connect_api));
+                Toast.makeText(getContext(), getString(R.string.error_with_message, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void bindPodiumGame(Game game, ImageView imageView, TextView titleView, TextView winsView) {
         titleView.setText(game.getTitle());
-        winsView.setText("Wins: " + game.getWins());
+        winsView.setText(getString(R.string.wins_text, game.getWins()));
 
         if (!TextUtils.isEmpty(game.getCoverImageUrl())) {
             Picasso.get()

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pressstart2p"
-        android:text="LEADERBOARD"
+        android:text="@string/leaderboard_title"
         android:textColor="@color/retro_yellow"
         android:textSize="18sp"
         android:paddingBottom="10dp" />
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pressstart2p"
-        android:text="Loading leaderboard..."
+        android:text="@string/loading_leaderboard"
         android:textColor="@color/retro_blue"
         android:textSize="8sp"
         android:paddingBottom="12dp" />
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pressstart2p"
-                android:text="2nd Place"
+                android:text="@string/second_place_title"
                 android:textColor="#C0C0C0"
                 android:textSize="7sp"
                 android:gravity="center"
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pressstart2p"
-                android:text="Wins: 0"
+                android:text="@string/wins_zero"
                 android:textColor="@color/retro_text_secondary"
                 android:textSize="6sp"
                 android:paddingTop="4dp"
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pressstart2p"
-                    android:text="2ND"
+                    android:text="@string/second_place_short"
                     android:textColor="@color/retro_bg"
                     android:textSize="9sp" />
             </LinearLayout>
@@ -109,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pressstart2p"
-                android:text="1st Place"
+                android:text="@string/first_place_title"
                 android:textColor="#FFD700"
                 android:textSize="8sp"
                 android:gravity="center"
@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pressstart2p"
-                android:text="Wins: 0"
+                android:text="@string/wins_zero"
                 android:textColor="@color/retro_text_secondary"
                 android:textSize="6sp"
                 android:paddingTop="4dp"
@@ -138,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pressstart2p"
-                    android:text="1ST"
+                    android:text="@string/first_place_short"
                     android:textColor="@color/retro_bg"
                     android:textSize="10sp" />
             </LinearLayout>
@@ -164,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pressstart2p"
-                android:text="3rd Place"
+                android:text="@string/third_place_title"
                 android:textColor="#CD7F32"
                 android:textSize="7sp"
                 android:gravity="center"
@@ -176,7 +176,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pressstart2p"
-                android:text="Wins: 0"
+                android:text="@string/wins_zero"
                 android:textColor="@color/retro_text_secondary"
                 android:textSize="6sp"
                 android:paddingTop="4dp"
@@ -193,7 +193,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pressstart2p"
-                    android:text="3RD"
+                    android:text="@string/third_place_short"
                     android:textColor="@color/retro_bg"
                     android:textSize="9sp" />
             </LinearLayout>
@@ -206,7 +206,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pressstart2p"
-        android:text="OTHER RANKS"
+        android:text="@string/other_ranks"
         android:textColor="@color/retro_blue"
         android:textSize="8sp"
         android:paddingBottom="10dp" />

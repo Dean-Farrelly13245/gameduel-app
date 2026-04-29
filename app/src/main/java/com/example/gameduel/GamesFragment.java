@@ -8,12 +8,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,7 +36,7 @@ public class GamesFragment extends Fragment {
         recyclerGames.setLayoutManager(new LinearLayoutManager(getContext()));
 
         spinnerSort = view.findViewById(R.id.spinner_sort);
-        String[] sortOptions = {"A-Z", "Z-A", "Most Wins", "Most Losses", "Most Recent", "Oldest"};
+        String[] sortOptions = getResources().getStringArray(R.array.sort_options);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, sortOptions);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSort.setAdapter(spinnerAdapter);
@@ -45,7 +48,8 @@ public class GamesFragment extends Fragment {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
         loadGames();
@@ -66,13 +70,13 @@ public class GamesFragment extends Fragment {
                     recyclerGames.setAdapter(adapter);
                     sortGames(spinnerSort.getSelectedItemPosition());
                 } else {
-                    Toast.makeText(getContext(), "Failed to load games", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.failed_load_games), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Game>> call, Throwable t) {
-                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_with_message, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -83,12 +87,24 @@ public class GamesFragment extends Fragment {
         List<Game> sorted = new ArrayList<>(allGames);
 
         switch (position) {
-            case 0: Collections.sort(sorted, (a, b) -> a.getTitle().compareTo(b.getTitle())); break;
-            case 1: Collections.sort(sorted, (a, b) -> b.getTitle().compareTo(a.getTitle())); break;
-            case 2: Collections.sort(sorted, (a, b) -> b.getWins() - a.getWins()); break;
-            case 3: Collections.sort(sorted, (a, b) -> b.getLosses() - a.getLosses()); break;
-            case 4: Collections.sort(sorted, (a, b) -> b.getReleaseYear() - a.getReleaseYear()); break;
-            case 5: Collections.sort(sorted, (a, b) -> a.getReleaseYear() - b.getReleaseYear()); break;
+            case 0:
+                Collections.sort(sorted, (a, b) -> a.getTitle().compareTo(b.getTitle()));
+                break;
+            case 1:
+                Collections.sort(sorted, (a, b) -> b.getTitle().compareTo(a.getTitle()));
+                break;
+            case 2:
+                Collections.sort(sorted, (a, b) -> b.getWins() - a.getWins());
+                break;
+            case 3:
+                Collections.sort(sorted, (a, b) -> b.getLosses() - a.getLosses());
+                break;
+            case 4:
+                Collections.sort(sorted, (a, b) -> b.getReleaseYear() - a.getReleaseYear());
+                break;
+            case 5:
+                Collections.sort(sorted, (a, b) -> a.getReleaseYear() - b.getReleaseYear());
+                break;
         }
 
         if (adapter != null) adapter.updateList(sorted);
