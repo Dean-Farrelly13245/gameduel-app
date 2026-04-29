@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/retro_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADD GAME"
+            android:textSize="16sp"
+            android:textColor="@color/retro_yellow"
+            android:fontFamily="@font/pressstart2p"
+            android:paddingBottom="24dp"/>
+
+        <EditText
+            android:id="@+id/edit_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title"
+            android:textColor="@color/white"
+            android:textColorHint="@color/retro_text_secondary"
+            android:backgroundTint="@color/retro_blue"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/edit_genre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Genre"
+            android:textColor="@color/white"
+            android:textColorHint="@color/retro_text_secondary"
+            android:backgroundTint="@color/retro_blue"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/edit_platform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Platform"
+            android:textColor="@color/white"
+            android:textColorHint="@color/retro_text_secondary"
+            android:backgroundTint="@color/retro_blue"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/edit_release_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Release Year"
+            android:textColor="@color/white"
+            android:textColorHint="@color/retro_text_secondary"
+            android:backgroundTint="@color/retro_blue"
+            android:inputType="number"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/edit_cover_image_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cover Image URL"
+            android:textColor="@color/white"
+            android:textColorHint="@color/retro_text_secondary"
+            android:backgroundTint="@color/retro_blue"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btn_save_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE GAME"
+            android:backgroundTint="@color/retro_blue"
+            android:textColor="@color/retro_bg"/>
+
+    </LinearLayout>
+
+</ScrollView>

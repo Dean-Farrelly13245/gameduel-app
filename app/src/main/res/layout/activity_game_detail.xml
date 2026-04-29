@@ -2,12 +2,13 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/retro_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/img_cover"
@@ -20,44 +21,68 @@
             android:id="@+id/txt_detail_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            android:textColor="@color/retro_yellow"
+            android:fontFamily="@font/pressstart2p"
+            android:layout_marginBottom="12dp"/>
 
         <TextView
             android:id="@+id/txt_detail_genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginBottom="4dp"/>
+            android:textSize="13sp"
+            android:textColor="@color/retro_blue"
+            android:layout_marginBottom="6dp"/>
 
         <TextView
             android:id="@+id/txt_detail_platform"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginBottom="4dp"/>
+            android:textSize="13sp"
+            android:textColor="@color/retro_blue"
+            android:layout_marginBottom="6dp"/>
 
         <TextView
             android:id="@+id/txt_detail_release_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginBottom="4dp"/>
+            android:textSize="13sp"
+            android:textColor="@color/retro_blue"
+            android:layout_marginBottom="6dp"/>
 
         <TextView
             android:id="@+id/txt_detail_wins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginBottom="4dp"/>
+            android:textSize="13sp"
+            android:textColor="@color/retro_blue"
+            android:layout_marginBottom="6dp"/>
 
         <TextView
             android:id="@+id/txt_detail_losses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginBottom="4dp"/>
+            android:textSize="13sp"
+            android:textColor="@color/retro_blue"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btn_edit_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EDIT GAME"
+            android:backgroundTint="@color/retro_blue"
+            android:textColor="@color/retro_bg"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btn_delete_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE GAME"
+            android:backgroundTint="#FF0000"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 

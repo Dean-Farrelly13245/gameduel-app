@@ -1,5 +1,6 @@
 package com.example.gameduel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -38,6 +40,12 @@ public class GamesFragment extends Fragment {
 
         spinnerSort = view.findViewById(R.id.spinner_sort);
         editSearch = view.findViewById(R.id.edit_search);
+
+        Button btnAddGame = view.findViewById(R.id.btn_add_game);
+        btnAddGame.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), AddGameActivity.class);
+            startActivity(intent);
+        });
 
         String[] sortOptions = {"A-Z", "Z-A", "Most Wins", "Most Losses", "Most Recent", "Oldest"};
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, sortOptions);
@@ -70,6 +78,12 @@ public class GamesFragment extends Fragment {
         loadGames();
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadGames();
     }
 
     private void loadGames() {
@@ -105,8 +119,7 @@ public class GamesFragment extends Fragment {
 
         List<Game> filtered = new ArrayList<>();
         for (Game game : allGames) {
-            String title = game.getTitle() != null ? game.getTitle() : "";
-            if (title.toLowerCase().contains(query)) {
+            if (game.getTitle().toLowerCase().contains(query)) {
                 filtered.add(game);
             }
         }
