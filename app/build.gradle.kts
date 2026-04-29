@@ -45,6 +45,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.test.runner)
     androidTestImplementation(libs.test.rules)
+    androidTestImplementation(libs.espresso.contrib)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.picasso:picasso:2.8")
