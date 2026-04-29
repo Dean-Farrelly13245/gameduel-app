@@ -19,41 +19,25 @@ public class GameDetailActivity extends AppCompatActivity {
     private String title, genre, platform, coverImageUrl, description;
     private int releaseYear, wins, losses;
 
+    private ImageView imgCover;
+    private TextView txtTitle, txtGenre, txtPlatform, txtReleaseYear, txtWins, txtLosses;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_detail);
 
-        ImageView imgCover = findViewById(R.id.img_cover);
-        TextView txtTitle = findViewById(R.id.txt_detail_title);
-        TextView txtGenre = findViewById(R.id.txt_detail_genre);
-        TextView txtPlatform = findViewById(R.id.txt_detail_platform);
-        TextView txtReleaseYear = findViewById(R.id.txt_detail_release_year);
-        TextView txtWins = findViewById(R.id.txt_detail_wins);
-        TextView txtLosses = findViewById(R.id.txt_detail_losses);
+        imgCover = findViewById(R.id.img_cover);
+        txtTitle = findViewById(R.id.txt_detail_title);
+        txtGenre = findViewById(R.id.txt_detail_genre);
+        txtPlatform = findViewById(R.id.txt_detail_platform);
+        txtReleaseYear = findViewById(R.id.txt_detail_release_year);
+        txtWins = findViewById(R.id.txt_detail_wins);
+        txtLosses = findViewById(R.id.txt_detail_losses);
         Button btnEdit = findViewById(R.id.btn_edit_game);
         Button btnDelete = findViewById(R.id.btn_delete_game);
 
         gameId = getIntent().getIntExtra("id", -1);
-        title = getIntent().getStringExtra("title");
-        genre = getIntent().getStringExtra("genre");
-        platform = getIntent().getStringExtra("platform");
-        releaseYear = getIntent().getIntExtra("releaseYear", 0);
-        coverImageUrl = getIntent().getStringExtra("coverImageUrl");
-        description = getIntent().getStringExtra("description");
-        wins = getIntent().getIntExtra("wins", 0);
-        losses = getIntent().getIntExtra("losses", 0);
-
-        txtTitle.setText(title);
-        txtGenre.setText("Genre: " + genre);
-        txtPlatform.setText("Platform: " + platform);
-        txtReleaseYear.setText("Release Year: " + releaseYear);
-        txtWins.setText("Wins: " + wins);
-        txtLosses.setText("Losses: " + losses);
-
-        if (coverImageUrl != null && !coverImageUrl.isEmpty()) {
-            Picasso.get().load(coverImageUrl).into(imgCover);
-        }
 
         btnEdit.setOnClickListener(v -> {
             Intent intent = new Intent(this, EditGameActivity.class);
@@ -76,6 +60,44 @@ public class GameDetailActivity extends AppCompatActivity {
                     .setPositiveButton("Delete", (dialog, which) -> deleteGame())
                     .setNegativeButton("Cancel", null)
                     .show();
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ApiService apiService = RetrofitClient.getInstance().create(ApiService.class);
+        apiService.getGame(gameId).enqueue(new Callback<Game>() {
+            @Override
+            public void onResponse(Call<Game> call, Response<Game> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Game game = response.body();
+                    title = game.getTitle();
+                    genre = game.getGenre();
+                    platform = game.getPlatform();
+                    releaseYear = game.getReleaseYear();
+                    coverImageUrl = game.getCoverImageUrl();
+                    description = game.getDescription();
+                    wins = game.getWins();
+                    losses = game.getLosses();
+
+                    txtTitle.setText(title);
+                    txtGenre.setText("Genre: " + genre);
+                    txtPlatform.setText("Platform: " + platform);
+                    txtReleaseYear.setText("Release Year: " + releaseYear);
+                    txtWins.setText("Wins: " + wins);
+                    txtLosses.setText("Losses: " + losses);
+
+                    if (coverImageUrl != null && !coverImageUrl.isEmpty()) {
+                        Picasso.get().load(coverImageUrl).into(imgCover);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Game> call, Throwable t) {
+                Toast.makeText(GameDetailActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
