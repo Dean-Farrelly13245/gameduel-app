@@ -45,11 +45,13 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         if (!TextUtils.isEmpty(game.getCoverImageUrl())) {
             Picasso.get()
                     .load(game.getCoverImageUrl())
+                    .placeholder(android.R.drawable.ic_menu_gallery)
+                    .error(android.R.drawable.ic_menu_report_image)
                     .fit()
                     .centerCrop()
                     .into(holder.imgCover);
         } else {
-            holder.imgCover.setImageDrawable(null);
+            holder.imgCover.setImageResource(android.R.drawable.ic_menu_gallery);
         }
     }
 

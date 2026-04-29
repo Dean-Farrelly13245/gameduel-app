@@ -75,7 +75,8 @@ public class MatchupsFragment extends Fragment {
     }
 
     private void loadGames() {
-        txtStatus.setText(getString(R.string.loading_games));
+        if (!isAdded()) return;
+        txtStatus.setText("Loading games...");
 
         ApiService apiService = RetrofitClient.getInstance().create(ApiService.class);
         Call<List<Game>> call = apiService.getGames();
@@ -83,35 +84,36 @@ public class MatchupsFragment extends Fragment {
         call.enqueue(new Callback<List<Game>>() {
             @Override
             public void onResponse(Call<List<Game>> call, Response<List<Game>> response) {
+                if (!isAdded()) return;
                 if (response.isSuccessful() && response.body() != null) {
                     allGames = response.body();
 
                     if (allGames.size() < 2) {
-                        txtStatus.setText(getString(R.string.not_enough_games_vote));
+                        txtStatus.setText("Not enough games to vote.");
                         setCardsEnabled(false);
                         return;
                     }
 
                     showRandomMatchup();
                 } else {
-                    txtStatus.setText(getString(R.string.failed_load_games));
-                    showToast(getString(R.string.failed_load_games));
+                    txtStatus.setText("Failed to load games.");
                     setCardsEnabled(false);
                 }
             }
 
             @Override
             public void onFailure(Call<List<Game>> call, Throwable t) {
-                txtStatus.setText(getString(R.string.could_not_connect_api));
-                showToast(getString(R.string.error_with_message, t.getMessage()));
+                if (!isAdded()) return;
+                txtStatus.setText("Could not connect to API.");
                 setCardsEnabled(false);
             }
         });
     }
 
     private void showRandomMatchup() {
+        if (!isAdded()) return;
         if (allGames.size() < 2) {
-            txtStatus.setText(getString(R.string.not_enough_games_matchup));
+            txtStatus.setText("Not enough games.");
             return;
         }
 
@@ -128,35 +130,38 @@ public class MatchupsFragment extends Fragment {
         bindGameToCard(currentGameA, imgGameA, txtGameATitle, txtGameAGenre, txtGameAPlatform);
         bindGameToCard(currentGameB, imgGameB, txtGameBTitle, txtGameBGenre, txtGameBPlatform);
 
-        txtStatus.setText(getString(R.string.tap_game_to_vote));
+        txtStatus.setText("Tap a game to vote!");
         setCardsEnabled(true);
         isVoting = false;
     }
 
     private void bindGameToCard(Game game, ImageView imageView, TextView txtTitle, TextView txtGenre, TextView txtPlatform) {
         txtTitle.setText(game.getTitle());
-        txtGenre.setText(getString(R.string.genre_text, game.getGenre()));
-        txtPlatform.setText(getString(R.string.platform_text, game.getPlatform()));
+        txtGenre.setText("Genre: " + game.getGenre());
+        txtPlatform.setText("Platform: " + game.getPlatform());
 
         if (!TextUtils.isEmpty(game.getCoverImageUrl())) {
             Picasso.get()
                     .load(game.getCoverImageUrl())
+                    .placeholder(android.R.drawable.ic_menu_gallery)
+                    .error(android.R.drawable.ic_menu_report_image)
                     .fit()
                     .centerCrop()
                     .into(imageView);
         } else {
-            imageView.setImageDrawable(null);
+            imageView.setImageResource(android.R.drawable.ic_menu_gallery);
         }
     }
 
     private void voteForGame(Game winnerGame) {
+        if (!isAdded()) return;
         if (winnerGame == null || currentGameA == null || currentGameB == null || isVoting) {
             return;
         }
 
         isVoting = true;
         setCardsEnabled(false);
-        txtStatus.setText(getString(R.string.saving_vote));
+        txtStatus.setText("Saving vote...");
 
         Matchup matchup = new Matchup(currentGameA.getId(), currentGameB.getId(), null);
 
@@ -166,50 +171,51 @@ public class MatchupsFragment extends Fragment {
         createCall.enqueue(new Callback<Matchup>() {
             @Override
             public void onResponse(Call<Matchup> call, Response<Matchup> response) {
+                if (!isAdded()) return;
                 if (response.isSuccessful() && response.body() != null) {
                     int matchupId = response.body().getId();
                     sendVote(matchupId, winnerGame.getId());
                 } else {
                     isVoting = false;
-                    txtStatus.setText(getString(R.string.failed_create_matchup));
-                    showToast(getString(R.string.failed_create_matchup));
+                    txtStatus.setText("Failed to create matchup.");
                     setCardsEnabled(true);
                 }
             }
 
             @Override
             public void onFailure(Call<Matchup> call, Throwable t) {
+                if (!isAdded()) return;
                 isVoting = false;
-                txtStatus.setText(getString(R.string.could_not_create_matchup));
-                showToast(getString(R.string.error_with_message, t.getMessage()));
+                txtStatus.setText("Could not create matchup.");
                 setCardsEnabled(true);
             }
         });
     }
 
     private void sendVote(int matchupId, int winnerId) {
+        if (!isAdded()) return;
         ApiService apiService = RetrofitClient.getInstance().create(ApiService.class);
         Call<Void> voteCall = apiService.voteMatchup(matchupId, winnerId);
 
         voteCall.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                if (!isAdded()) return;
                 if (response.isSuccessful()) {
-                    showToast(getString(R.string.vote_saved));
+                    showToast("Vote saved!");
                     showRandomMatchup();
                 } else {
                     isVoting = false;
-                    txtStatus.setText(getString(R.string.failed_save_vote));
-                    showToast(getString(R.string.failed_save_vote));
+                    txtStatus.setText("Failed to save vote.");
                     setCardsEnabled(true);
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                if (!isAdded()) return;
                 isVoting = false;
-                txtStatus.setText(getString(R.string.could_not_save_vote));
-                showToast(getString(R.string.error_with_message, t.getMessage()));
+                txtStatus.setText("Could not save vote.");
                 setCardsEnabled(true);
             }
         });
